@@ -3,6 +3,8 @@ set visualbell " stop
 set guioptions=
 set hidden " for buffers
 set clipboard=unnamed
+set tabstop=4
+set shiftwidth=4
 
 "--------------------------------------------------------------------------------
 " vim-plug
@@ -36,6 +38,7 @@ Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-easytags'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-commentary'
+Plug 'SirVer/ultisnips'
 " clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'guns/vim-sexp'
@@ -44,7 +47,7 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
-Plug 'ctrlpvim/ctrlp.vim', {'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPMixed', 'CtrlPMRU', 'CtrlPTag', 'CtrlPBufTagAll']}
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'dyng/ctrlsf.vim'
 
@@ -58,7 +61,7 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 
-set guifont=Monaco:h13
+set guifont=Monaco:h14
 
 " set relativenumber
 set number
@@ -123,6 +126,12 @@ let g:easytags_events = ['BufWritePost']
 set diffopt+=vertical
 
 
+" UltiSnips triggering
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+
 let mapleader=" " " Space as <leader>
 let maplocalleader="," " Space as <localleader>
 
@@ -161,6 +170,10 @@ nmap <leader>= <Plug>(EasyAlign)
 
 "clojure
 autocmd FileType clojure setlocal commentstring=;;\ %s
+
+"golang
+autocmd FileType go nmap <leader>j :GoDecls<CR>
+autocmd FileType go nmap <leader>dd :GoDef<CR>
 
 nmap <leader>D [<C-D>
  "eval and print result
