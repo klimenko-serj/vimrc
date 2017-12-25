@@ -142,7 +142,8 @@ nmap <leader>at :CtrlSFToggle<CR>
 nmap <leader>aa <Plug>CtrlSFCwordPath
 vmap <leader>aa <Plug>CtrlSFVwordPath
 "git
-nmap <leader>gs :Gstatus<CR>
+nmap <leader>gs :MagitOnly<CR>
+nmap <leader>gS :Gstatus<CR>
 nmap <leader>gb :Gblame<CR>
 nmap <leader>gg :Git<Space>
 nmap <leader>gm :MerginalToggle<CR>
