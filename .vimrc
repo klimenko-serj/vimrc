@@ -2,6 +2,7 @@ set nocp       " nocompatible
 set visualbell " stop
 set guioptions=
 set hidden " for buffers
+set clipboard=unnamed
 
 "--------------------------------------------------------------------------------
 " vim-plug
