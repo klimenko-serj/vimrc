@@ -30,16 +30,18 @@ Plug 'idanarye/vim-merginal'
 Plug 'jreybert/vimagit'
 
 " programming
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'majutsushi/tagbar'
 Plug 'xolox/vim-easytags'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'tpope/vim-commentary'
+" clojure
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-Plug 'ntpeters/vim-better-whitespace'
-" Plug 'thaerkh/vim-indentguides'
+" golang
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'ctrlpvim/ctrlp.vim', {'on': ['CtrlP', 'CtrlPBuffer', 'CtrlPMixed', 'CtrlPMRU', 'CtrlPTag', 'CtrlPBufTagAll']}
