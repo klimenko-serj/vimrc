@@ -9,7 +9,7 @@ PRE:
 * Install **vim** (sure???)
 * (if you have one) **Backup** and remove your old config
 * Install *vim-plug* (https://github.com/junegunn/vim-plug)
-* Check *YouCompleteMe* (https://github.com/Valloric/YouCompleteMe) requires  (like CMake)
+* Check *YouCompleteMe* (https://github.com/Valloric/YouCompleteMe) requires  (like CMake, python-dev, etc...)
 
 Then
 ```bash
