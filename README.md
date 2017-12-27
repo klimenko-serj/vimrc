@@ -1,4 +1,3 @@
-# vimrc
 My VIM config
 ===
 This repo contains my **vim** config and other files (like snippets) for my **vim**
