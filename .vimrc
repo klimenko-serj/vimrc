@@ -179,6 +179,11 @@ let g:go_auto_type_info = 1
 autocmd FileType go nmap <leader>j :GoDecls<CR>
 autocmd FileType go nmap <leader>dd :GoDef<CR>
 
+"json
+nmap =j :%!python -m json.tool<CR>
+vmap =j :%!python -m json.tool<CR>
+
+
 nmap <leader>D [<C-D>
  "eval and print result
 nmap <leader>ee (y%P)a<CR><Esc>c!!
