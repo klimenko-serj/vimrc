@@ -174,6 +174,8 @@ nmap <leader>= <Plug>(EasyAlign)
 autocmd FileType clojure setlocal commentstring=;;\ %s
 
 "golang
+let g:go_auto_sameids = 1
+let g:go_auto_type_info = 1
 autocmd FileType go nmap <leader>j :GoDecls<CR>
 autocmd FileType go nmap <leader>dd :GoDef<CR>
 
