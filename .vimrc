@@ -5,6 +5,7 @@ set hidden " for buffers
 set clipboard=unnamed
 set tabstop=4
 set shiftwidth=4
+set updatetime=1000
 
 "--------------------------------------------------------------------------------
 " vim-plug
@@ -130,6 +131,7 @@ set diffopt+=vertical
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/vimrc/mysnippets']
 
 
 let mapleader=" " " Space as <leader>

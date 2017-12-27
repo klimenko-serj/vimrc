@@ -1,0 +1,35 @@
+snippet df "def"
+(def ${1:name} $0)
+endsnippet
+
+snippet dfn "defn"
+(defn ${1:func-name} [${2:& args}]
+  ${0: ;; TODO: ...}
+  )
+endsnippet
+
+snippet dfnd "defn with doc"
+(defn ${1:func-name}
+  "$1 ${2:...}"
+  [${2:& args}]
+  ${0: ;; TODO: ...}
+  )
+endsnippet
+
+snippet td "TODO"
+;; TODO: ${0:...}
+endsnippet
+
+snippet ns "namespace"
+(ns ${1:`!v substitute(substitute(substitute(expand('%:p:r'), '.*/\(src\|test\)/', '', ''), '/', '.', 'g'), '_', '-', 'g')`}
+    (:require `!v expand('%:r') =~ '_test$' ? '[clojure.test :refer :all]' : ''`${2:}))
+endsnippet
+
+snippet rq "require line"
+[${1:namespace} :as ${2:`!p snip.rv = t[1].split('.')[-1:][0]`}]
+endsnippet
+
+snippet main "defn main..."
+(defn -main [& args]
+  ${1:(println "Hello World!!!")})
+endsnippet
