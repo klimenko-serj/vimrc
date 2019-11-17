@@ -6,6 +6,7 @@ set clipboard=unnamed
 set tabstop=4
 set shiftwidth=4
 set updatetime=1000
+set encoding=utf-8
 
 "--------------------------------------------------------------------------------
 " vim-plug
@@ -47,7 +48,8 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 " golang
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
-Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTreeFind', 'NERDTree'] }
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tacahiroy/ctrlp-funky'
 Plug 'dyng/ctrlsf.vim'
@@ -91,6 +93,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.webhistory     " CtrlP MacOSX/Linux
 let g:ctrlp_working_path_mode = 'ra'         " where
 let g:ctrlp_by_filename       = 1
 let g:ctrlp_user_command      = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 
 " CtrlSF
 let g:ctrlsf_indent = 1
@@ -104,7 +107,13 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+			  \ --ignore .git
+			  \ --ignore .svn
+			  \ --ignore .hg
+			  \ --ignore .DS_Store
+			  \ --ignore "**/*.pyc"
+			  \ -g ""'
 
   let g:gitgutter_grep_command='ag --nocolor'
   " ag is fast enough that CtrlP doesn't need to cache
@@ -137,7 +146,24 @@ let g:UltiSnipsSnippetDirectories=[$HOME.'/vimrc/mysnippets']
 let mapleader=" " " Space as <leader>
 let maplocalleader="," " Space as <localleader>
 
-nmap <leader>t  :NERDTreeFind<CR>
+" NERDTree
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if (argc() == 0 && !exists("s:std_in")) | NERDTree | endif
+" autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+function! SmartNERDTree()
+    if @% == ""
+        NERDTreeToggle
+    else
+        NERDTreeFind
+    endif
+endfun
+
+
+nmap <leader>t  :call SmartNERDTree()<CR>
 nmap <leader>b  :CtrlPBuffer<CR>
 nmap <leader>f  :CtrlPMixed<CR>
 nmap <leader>r  :CtrlPMRU<CR>
@@ -178,6 +204,8 @@ let g:go_auto_sameids = 1
 let g:go_auto_type_info = 1
 autocmd FileType go nmap <leader>j :GoDecls<CR>
 autocmd FileType go nmap <leader>dd :GoDef<CR>
+autocmd FileType go nmap <leader>B :GoBuild<CR>
+autocmd FileType go nmap <leader>R :GoRun<CR>
 
 "json
 nmap =j :%!python -m json.tool<CR>
